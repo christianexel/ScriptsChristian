@@ -11,14 +11,14 @@ read -p "Opcion: " opcion
 case $opcion in
   1)
     read -p "Usuario: " u
-    read -p "Grupo (asir1 / asir2 / informatica1 / informatica2): " g
-    read -p "OU (Alumnado / Profesorado): " ou
+    read -p "Grupo: " g
+    read -p "OU: " ou
     echo -e "dn: uid=$u,cn=$g,ou=$ou,$BASE\nchangetype: modify\ndelete: mail" | ldapmodify -x -D "$ADMIN" -W
     ;;
   2)
     read -p "Usuario: " u
-    read -p "Grupo (asir1 / asir2 / informatica1 / informatica2): " g
-    read -p "OU (Alumnado / Profesorado): " ou
+    read -p "Grupo: " g
+    read -p "OU: " ou
     read -p "Nuevo correo: " m
     echo -e "dn: uid=$u,cn=$g,ou=$ou,$BASE\nchangetype: modify\nreplace: mail\nmail: $m" | ldapmodify -x -D "$ADMIN" -W
     ;;
